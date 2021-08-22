@@ -1,7 +1,42 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .moveButton {
   transition: all 0.2s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
 }
 
 .moveButton:hover {
   transform: scale(1.2);
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s linear;
+}
+
+.fadeOut {
+  animation: fadeOut 0.3s linear;
 }

@@ -4,23 +4,21 @@ import './moveButton.css'
 
 export const MoveButton: FC<{ 
     styles?: Record<string,string|number>
+    className?: string;
+    onAnimationEnd?: (animationName: string) => void;
     onClick?: unknown;
-}> = ({ styles = {}, onClick }) => {
+}> = ({ 
+    styles = {}, 
+    onClick, 
+    className = '', 
+    onAnimationEnd = () => {} 
+}) => {
     return (
         <button 
+            onAnimationEnd={({ animationName }) => onAnimationEnd(animationName)}
             onClick={() => onClick}
-            className='moveButton'
-            style={{ 
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 30, 
-                height: 30, 
-                border: 'none',
-                borderRadius: '50%', 
-                backgroundColor: 'red', 
-                color: 'white', 
-                ...styles }}
+            className={`moveButton ${ className }`}
+            style={{ ...styles }}
             >
             <UpArrow style={{ height: 15, width: 15, strokeWidth: 3 }} />
         </button>
