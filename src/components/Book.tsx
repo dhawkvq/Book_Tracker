@@ -1,10 +1,16 @@
 import { FC, useState } from 'react'
+import { useBookContext } from '../context/BookContext';
 import { Book } from '../types/Book'
+import { KeyOfShelf, Shelf } from '../types/Shelf';
 import { MoveButton } from './MoveButton/MoveButton'
 
 export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
     const [hoveredOver, setHoveredOver] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const { 
+        updateBook, 
+        getAllBooks, 
+        setBooks } = useBookContext();
 
     const handleMoustEnterAndLeave = (type: 'enter'| 'leave') => {
         if(type === 'enter'){
@@ -14,6 +20,16 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
             setHoveredOver(false);
         }
     }
+
+    const handleOptionClick = async (value: KeyOfShelf ) => {
+        try {
+            await updateBook(book.id,Shelf[value]);
+            const updatedBooks = await getAllBooks();
+            setBooks(updatedBooks)
+        } catch (error) {
+            console.error(error)
+        }
+    }
     return (
         <div {...rest} 
             style={{ 
@@ -21,7 +37,7 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
                 flexDirection: 'column', 
                 alignItems: 'center', 
                 textAlign: 'center', 
-                maxWidth: 160 
+                maxWidth: 160
             }}
         >
             {/* Book Cover */}
@@ -48,7 +64,12 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
                         onAnimationEnd={(animationName) => 
                             animationName === 'fadeOut' && setShowButton(false)
                         }
+                        onOptionClick={handleOptionClick}
                         className={ hoveredOver ? 'fadeIn': 'fadeOut'}
+                        shelfOptions={Object.keys(Shelf).filter((shelfKey) => {
+                            const key = shelfKey as KeyOfShelf;
+                            return Shelf[key] !== book.shelf 
+                        }) as Array<KeyOfShelf>}
                         styles={{ position: 'absolute', bottom: -15, right: -15 }} 
                     />
                 }

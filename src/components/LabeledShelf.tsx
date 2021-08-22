@@ -1,18 +1,17 @@
 import { FC } from 'react';
 import { Book } from '../types/Book';
-import { Shelf } from '../types/Shelf';
+import { KeyOfShelf } from '../types/Shelf';
+import { Styles } from '../types/Styles';
 import { ReadingBook } from './Book';
 
 /**
- * 
  * @param {string} [label="CURRENTLY_READING"] - Defaults to CURRENTLY_READING 
- * @returns 
  */
 
 export const LabeledShelf: FC<{ 
-    label?: keyof typeof Shelf;
+    label?: KeyOfShelf;
     books?: Book[];
-    styles?: Record<string,string|number>;
+    styles?: Styles;
 }> = ({ 
     books,
     label = 'CURRENTLY_READING',
