@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BookProvider } from './context/BookContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BookProvider>
+     <App />
+    </BookProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
