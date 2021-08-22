@@ -3,6 +3,7 @@ import { ReadingModes } from './ReadingModes';
 import { PanelizationSummary } from './PanelizationSummary';
 import { ImageLinks } from './ImageLinks';
 import { Shelf } from './Shelf';
+import { ValueOf } from './ValueOf';
 
 export interface Book {
     title: string;
@@ -28,5 +29,5 @@ export interface Book {
     infoLink: string;
     canonicalVolumeLink: string;
     id: string;
-    shelf: Shelf;
+    shelf: ValueOf<Shelf>
 }
