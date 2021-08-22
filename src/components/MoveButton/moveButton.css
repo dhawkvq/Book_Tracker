@@ -1,0 +1,7 @@
+.moveButton {
+  transition: all 0.2s linear;
+}
+
+.moveButton:hover {
+  transform: scale(1.2);
+}
