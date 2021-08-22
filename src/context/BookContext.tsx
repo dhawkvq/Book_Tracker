@@ -9,6 +9,7 @@ export interface BookContextValue {
     getAllBooks: typeof bookApi.getAll;
     updateBook: typeof bookApi.update;
     search: typeof bookApi.search;
+    setBooks: (value: Book[]) => void;
 }
 
 export const BookContext = createContext<BookContextValue|null>(null);
@@ -29,7 +30,8 @@ export const BookProvider: FC = ({ children }) => {
             getAllBooks: bookApi.getAll,
             getBook: bookApi.get,
             updateBook: bookApi.update,
-            search: bookApi.search
+            search: bookApi.search,
+            setBooks
         }}>
             { children }
         </BookContext.Provider>

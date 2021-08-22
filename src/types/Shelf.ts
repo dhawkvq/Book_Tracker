@@ -3,3 +3,5 @@ export enum Shelf {
     WANT_TO_READ = 'wantToRead',
     READ = 'read'
 }
+
+export type KeyOfShelf = keyof typeof Shelf;
