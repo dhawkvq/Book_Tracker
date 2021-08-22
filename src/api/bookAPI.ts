@@ -1,6 +1,7 @@
+import { ValueOf } from "../types/ValueOf";
 import { Book } from "../types/Book"
 import { Shelf } from "../types/Shelf"
-const { REACT_APP_UDACITY_API } = process.env
+const { REACT_APP_UDACITY_API } = process.env;
 
 const api = REACT_APP_UDACITY_API;
 
@@ -48,7 +49,7 @@ export const getAll = async (): Promise<Book[]> => {
 
 export const update = async (
     bookId: Book['id'], 
-    shelf: keyof typeof Shelf
+    shelf: ValueOf<Shelf>
   ): Promise<any> => {
     try {
         const response = await fetch(`${api}/books/${bookId}`, {
