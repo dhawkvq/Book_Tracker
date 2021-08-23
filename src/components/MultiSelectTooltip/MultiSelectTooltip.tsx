@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { KeyOfShelf } from '../../types/Shelf'
 import { Styles } from '../../types/Styles'
+import { formatLabel } from '../../utils/formatLabel';
 import './tooltip.css';
 
 export const MultiSelectTooltip: FC<{
@@ -45,7 +46,7 @@ export const MultiSelectTooltip: FC<{
                             borderBottom: '1px solid gray',
                             fontSize: 12
                         }} >
-                            {option}
+                            {formatLabel(option)}
                     </li>
                 )
             })}

@@ -1,0 +1,14 @@
+.labeledShelf {
+  display: flex;
+  flex-direction: column;
+}
+
+.labeledShelf label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bookRow {
+  display: flex;
+  justify-content: center;
+}
