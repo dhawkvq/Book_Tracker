@@ -16,21 +16,33 @@
   }
 }
 
-.moveButton {
-  transition: all 0.2s linear;
+.buttonContainer {
+  position: relative;
+}
+
+.buttonContainer button {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  right: -15px;
+  bottom: -15px;
+  transition: all 0.2s linear;
   width: 30px;
   height: 30px;
   border: none;
   border-radius: 50%;
   background-color: red;
+  cursor: pointer;
   color: white;
 }
 
-.moveButton:hover {
+.buttonContainer button:hover {
   transform: scale(1.2);
+}
+
+.buttonContainer button svg {
+  stroke-width: 3px;
 }
 
 .fadeIn {
