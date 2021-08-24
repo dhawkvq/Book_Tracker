@@ -1,0 +1,21 @@
+.navBar {
+  position: sticky;
+  top: 0;
+  width: 98.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 1;
+  background-color: white;
+}
+
+.navBar h1 {
+  margin: 0;
+}
+
+.navBar a {
+  margin-right: 30px;
+  text-decoration: none;
+  color: black;
+}
