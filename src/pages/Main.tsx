@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { LabeledShelf } from '../components/LabeledShelf';
+import { LabeledShelf } from '../components/LabeledShelf/LabeledShelf';
 import { useBookContext } from '../context/BookContext';
 import { KeyOfShelf, Shelf } from '../types/Shelf';
 
