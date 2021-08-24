@@ -1,8 +1,9 @@
 import { FC, useState } from 'react'
-import { useBookContext } from '../context/BookContext';
-import { Book } from '../types/Book'
-import { KeyOfShelf, Shelf } from '../types/Shelf';
-import { MoveButton } from './MoveButton/MoveButton'
+import { useBookContext } from '../../context/BookContext';
+import { Book } from '../../types/Book'
+import { KeyOfShelf, Shelf } from '../../types/Shelf';
+import { MoveButton } from '../MoveButton/MoveButton';
+import './readingBook.css';
 
 export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
     const [hoveredOver, setHoveredOver] = useState(false);
@@ -31,33 +32,13 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
         }
     }
     return (
-        <div {...rest} 
-            style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                textAlign: 'center', 
-                maxWidth: 160
-            }}
-        >
+        <div {...rest} className='bookContainer'>
             {/* Book Cover */}
-            <div 
-                style={{  
-                    position: 'relative',
-                    height: 160, 
-                    width: 120, 
-                    border: '1px solid gray', 
-                    borderRadius: 20,
-                    padding: 1,
-                    margin: '0 5px'
-                }}
+            <div className='bookCover'
                 onMouseEnter={() => handleMoustEnterAndLeave('enter')}
                 onMouseLeave={() => handleMoustEnterAndLeave('leave')}
             >
-                <img src={book.imageLinks.thumbnail} 
-                    alt="book cover" 
-                    style={{ width: '100%', height: '100%', borderRadius: 20}} 
-                />
+                <img src={book.imageLinks.thumbnail} alt="book cover" />
                 {/* Move Button */}
                 {showButton && 
                     <MoveButton 
@@ -70,14 +51,17 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
                             const key = shelfKey as KeyOfShelf;
                             return Shelf[key] !== book.shelf 
                         }) as Array<KeyOfShelf>}
-                        styles={{ position: 'absolute', bottom: -15, right: -15 }} 
                     />
                 }
             </div>
             {/* Title */}
-            <h3>{book.title}</h3>
+            <h3 className='bookTitle'>{book.title}</h3>
             {/* Authors */}
-            <h4>{book.authors}</h4>
+            <div className='authors'>
+                {book.authors.map((author,idx) => (
+                    <h4 key={idx}>{author}</h4>
+                ))}
+            </div>
         </div>
     )
 }
