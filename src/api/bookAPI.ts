@@ -80,8 +80,12 @@ export const search = async (query: string): Promise<Book[]> => {
             },
             body: JSON.stringify({ query })
         })
+        const value = await response.json()
+        if(value.books.error){
+          throw new Error(value.books.error)
+        }
         if(response.ok){
-            return (await response.json()).books as Book[]
+            return value.books as Book[]
         }
         throw new Error(response.statusText)
     } 
