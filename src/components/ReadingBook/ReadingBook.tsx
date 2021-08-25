@@ -2,10 +2,19 @@ import { FC, useState } from 'react'
 import { useBookContext } from '../../context/BookContext';
 import { Book } from '../../types/Book'
 import { KeyOfShelf, Shelf } from '../../types/Shelf';
+import { Styles } from '../../types/Styles';
 import { MoveButton } from '../MoveButton/MoveButton';
+import noCover from '../../images/noCover.jpeg'
 import './readingBook.css';
 
-export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
+export const ReadingBook: FC<{ 
+    book: Book; 
+    styles?: Styles; 
+}> = ({ 
+    book, 
+    styles = {}, 
+    ...rest 
+}) => {
     const [hoveredOver, setHoveredOver] = useState(false);
     const [showButton, setShowButton] = useState(false);
     const { 
@@ -31,14 +40,17 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
             console.error(error)
         }
     }
+
+    const bookCoverSrc = book.imageLinks?.thumbnail ?? noCover;
+    
     return (
-        <div {...rest} className='bookContainer'>
+        <div {...rest} className='bookContainer' style={{ ...styles }}>
             {/* Book Cover */}
             <div className='bookCover'
                 onMouseEnter={() => handleMoustEnterAndLeave('enter')}
                 onMouseLeave={() => handleMoustEnterAndLeave('leave')}
             >
-                <img src={book.imageLinks.thumbnail} alt="book cover" />
+                <img src={bookCoverSrc} alt="book cover" />
                 {/* Move Button */}
                 {showButton && 
                     <MoveButton 
@@ -57,11 +69,13 @@ export const ReadingBook: FC<{ book: Book }> = ({ book, ...rest }) => {
             {/* Title */}
             <h3 className='bookTitle'>{book.title}</h3>
             {/* Authors */}
-            <div className='authors'>
-                {book.authors.map((author,idx) => (
-                    <h4 key={idx}>{author}</h4>
-                ))}
-            </div>
+            {book.authors && 
+                <div className='authors'>
+                    {book.authors.map((author,idx) => (
+                        <h4 key={idx}>{author}</h4>
+                    ))}
+                </div>
+            }
         </div>
     )
 }

@@ -8,7 +8,7 @@ import { ValueOf } from './ValueOf';
 export interface Book {
     title: string;
     subtitle: string;
-    authors: string[];
+    authors?: string[];
     publisher: string;
     publishDate: string;
     description: string;
@@ -23,7 +23,7 @@ export interface Book {
     allowAnonLogging: boolean;
     contentVersion: string;
     panelizationSummary: PanelizationSummary;
-    imageLinks: ImageLinks;
+    imageLinks?: ImageLinks;
     language: string;
     previewLink: string;
     infoLink: string;
