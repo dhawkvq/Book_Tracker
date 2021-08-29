@@ -1,4 +1,4 @@
 export interface PanelizationSummary {
-    containsEpubBubbles: boolean;
-    containsImageBubbles: boolean;
+  containsEpubBubbles: boolean;
+  containsImageBubbles: boolean;
 }

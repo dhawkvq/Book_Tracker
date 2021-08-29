@@ -1,4 +1,4 @@
 export interface IndustryIdentifiers {
-    type: string;
-    identifier: string;
+  type: string;
+  identifier: string;
 }

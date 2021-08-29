@@ -1,1 +1,1 @@
-export type Styles = Record<string,string|number>;
+export type Styles = Record<string, string | number>;

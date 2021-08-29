@@ -1,4 +1,4 @@
 export interface ReadingModes {
-    text: boolean;
-    image: boolean;
+  text: boolean;
+  image: boolean;
 }

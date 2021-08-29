@@ -1,4 +1,40 @@
-# Getting Started with Create React App
+<h1 style='font-size:40px'> Book - Tracker</h1>
+
+# Prerequisites
+
+**Node v.14**
+
+```
+Project was built with pinned version in package.json
+```
+
+> If you have Volta managing your Node version then you are all set to go 🤘
+
+**.env**
+
+Set the variable below in a .env file located in the root directory for this project
+
+```
+REACT_APP_UDACITY_API= <Udacity Provided Endpoint>
+```
+
+> You will need to grab the api endpoint from someone who is familiar with the endpoint for this project.
+
+**Ready for blastoff!**
+
+All you need to do now is install project dependencies, So run:
+
+```
+npm i
+```
+
+followed by:
+
+```
+npm start
+```
+
+<div style='border:2px solid gray;margin:40px 0'></div>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

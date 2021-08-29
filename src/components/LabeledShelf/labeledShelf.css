@@ -1,14 +1,31 @@
 .labeledShelf {
   display: flex;
   flex-direction: column;
+  padding: 10px 0 0 10px;
 }
 
 .labeledShelf label {
   font-size: 18px;
   font-weight: 600;
+  color: rgb(66, 66, 66);
+  margin-left: 5px;
+}
+
+.divider {
+  width: 95%;
+  margin: 3px 0 35px 0;
+  border: 1px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to left,
+    white,
+    rgba(165, 42, 42, 0.623)
+  );
 }
 
 .bookRow {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   justify-content: center;
 }

@@ -1,6 +1,1 @@
-export {
-    get,
-    getAll,
-    update,
-    search,
-} from './bookAPI';
+export { get, getAll, update, search } from "./bookAPI";
