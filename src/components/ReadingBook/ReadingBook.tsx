@@ -15,7 +15,7 @@ export const ReadingBook: FC<{
 }> = ({ book, styles = {}, currentlyOnShelf, ...rest }) => {
   const [hoveredOver, setHoveredOver] = useState(false);
   const [showButton, setShowButton] = useState(false);
-  const { updateBook, getAllBooks, setBooks } = useBookContext();
+  const { updateBook, setBooks } = useBookContext();
 
   const handleMoustEnterAndLeave = (type: "enter" | "leave") => {
     if (type === "enter") {
@@ -27,10 +27,14 @@ export const ReadingBook: FC<{
   };
 
   const handleOptionClick = async (value: KeyOfShelf) => {
+    const shelfValue = Shelf[value];
     try {
-      await updateBook(book.id, Shelf[value]);
-      const updatedBooks = await getAllBooks();
-      setBooks(updatedBooks);
+      await updateBook(book.id, shelfValue);
+      book.shelf = shelfValue;
+      setBooks((books) => [
+        ...books.filter((readingBook) => readingBook.id !== book.id),
+        book,
+      ]);
     } catch (error) {
       console.error(error);
     }

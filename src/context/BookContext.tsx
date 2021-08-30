@@ -8,7 +8,7 @@ export interface BookContextValue {
   getAllBooks: typeof bookApi.getAll;
   updateBook: typeof bookApi.update;
   search: typeof bookApi.search;
-  setBooks: (value: Book[]) => void;
+  setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
 }
 
 export const BookContext = createContext<BookContextValue | null>(null);
